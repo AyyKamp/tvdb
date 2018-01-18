@@ -9,12 +9,12 @@ var middleware = function(req, res, next) ***REMOVED***
 ***REMOVED***
 
 router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***),middleware);
-var User = require('./User');
+var user = require('./user');
 const TVDB = require('node-tvdb');
 const tvdb = new TVDB('C9081E62D92175EA');
 
 // ADD THIS PART
-// CREATES A NEW USER
+// CREATES A NEW uSER
 router.post('/', function (req, res) ***REMOVED***
     var editedBody = req.body;
     if(Object.values(req.body) == "") ***REMOVED***
@@ -31,7 +31,7 @@ router.post('/', function (req, res) ***REMOVED***
             console.log(error)
         ***REMOVED***);
 
-    /*User.create(***REMOVED***
+    /*user.create(***REMOVED***
             name : req.body.name,
             email : req.body.email,
             password : req.body.password
@@ -41,9 +41,9 @@ router.post('/', function (req, res) ***REMOVED***
             res.status(200).send(user);
         ***REMOVED***);*/
 ***REMOVED***);
-// RETURNS ALL THE USERS IN THE DATABASE
+// RETURNS ALL THE uSERS IN THE DATABASE
 router.get('/', function (req, res) ***REMOVED***
-    User.find(***REMOVED******REMOVED***, function (err, users) ***REMOVED***
+    user.find(***REMOVED******REMOVED***, function (err, users) ***REMOVED***
         if (err) return res.status(500).send("There was a problem finding the users.");
         res.status(200).send(users);
     ***REMOVED***);

@@ -4,5 +4,5 @@ var UserSchema = new mongoose.Schema(***REMOVED***
   email: String,
   password: String
 ***REMOVED***);
-mongoose.model('User', UserSchema);
-module.exports = mongoose.model('User');
+mongoose.model('user', UserSchema);
+module.exports = mongoose.model('user');
