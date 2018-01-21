@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var fs = require('fs');
 var html;
 
 var middleware = function(req, res, next) ***REMOVED***
@@ -11,12 +10,9 @@ var middleware = function(req, res, next) ***REMOVED***
 ***REMOVED***
 
 router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***),middleware);
-var user = require('./user');
 const TVDB = require('node-tvdb');
 const tvdb = new TVDB('C9081E62D92175EA');
 
-// ADD THIS PART
-// CREATES A NEW uSER
 router.post('/', function (req, res) ***REMOVED***
     var editedBody = req.body;
     if(Object.values(req.body) == "") ***REMOVED***
@@ -32,18 +28,8 @@ router.post('/', function (req, res) ***REMOVED***
         .catch(error => ***REMOVED***
             console.log(error)
         ***REMOVED***);
-
-    /*user.create(***REMOVED***
-            name : req.body.name,
-            email : req.body.email,
-            password : req.body.password
-        ***REMOVED***, 
-        function (err, user) ***REMOVED***
-            if (err) return res.status(500).send("There was a problem adding the information to the database.");
-            res.status(200).send(user);
-        ***REMOVED***);*/
 ***REMOVED***);
-// RETURNS ALL THE uSERS IN THE DATABASE
+
 router.get('/', function (req, res) ***REMOVED***
     res.status(200).sendFile("./site.html", ***REMOVED***root: __dirname ***REMOVED***);
 ***REMOVED***);

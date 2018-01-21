@@ -5,7 +5,6 @@
   "main": "server.js",
   "dependencies": ***REMOVED***
     "express": "^4.16.2",
-    "mongoose": "^4.13.9",
     "node-tvdb": "^3.2.0"
   ***REMOVED***,
   "devDependencies": ***REMOVED***
