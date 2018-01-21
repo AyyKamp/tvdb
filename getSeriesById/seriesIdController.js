@@ -15,7 +15,6 @@ var middleware = function(req, res, next) ***REMOVED***
 router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***),middleware);
 
 router.post('/', function (req, res) ***REMOVED***
-    console.log("haha")
     var editedBody = req.body;
     if(Object.values(req.body) == "") ***REMOVED***
         var editedBody = Object.keys(req.body)
