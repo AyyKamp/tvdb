@@ -13,6 +13,6 @@
   ***REMOVED***,
   "scripts": ***REMOVED***
     "test": "node ./fcm/admin.js",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   ***REMOVED***
 ***REMOVED***
