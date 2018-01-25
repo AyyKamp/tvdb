@@ -5,13 +5,14 @@
   "main": "server.js",
   "dependencies": ***REMOVED***
     "express": "^4.16.2",
+    "firebase-admin": "^5.8.1",
     "node-tvdb": "^3.2.0"
   ***REMOVED***,
   "devDependencies": ***REMOVED***
     "nodemon": "^1.14.11"
   ***REMOVED***,
   "scripts": ***REMOVED***
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "node ./fcm/admin.js",
+    "start": "nodemon server.js"
   ***REMOVED***
 ***REMOVED***

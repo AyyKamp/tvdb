@@ -23,16 +23,17 @@ router.post('/', function (req, res) ***REMOVED***
     ***REMOVED*** 
     
     
-    tvdb.getSeriesById(editedBody.series_id)
+    tvdb.getSeriesAllById(editedBody.series_id_all)
     .then(response => ***REMOVED***
-            res.status(200).send(response);
-        ***REMOVED***)
-        .catch(error => ***REMOVED***
-            console.log(error)
-        ***REMOVED***);
+        res.status(200).send(response);
+        res.status(200).send(response.episodes);
+    ***REMOVED***)
+    .catch(error => ***REMOVED***console.log(error)***REMOVED***);
+
 ***REMOVED***);
 
 router.get('/', function (req, res) ***REMOVED***
     res.status(200).sendFile(path.join(__dirname + "/../html/site.html"));
 ***REMOVED***);
+
 module.exports = router;
