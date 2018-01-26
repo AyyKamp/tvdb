@@ -26,24 +26,24 @@ router.post('/', function (req, res) ***REMOVED***
     var registrationToken = editedBody.token;
     var payload = ***REMOVED***
         notification: ***REMOVED***
-            title: "Fedor",
-            body: "lmao anime amirite!!!!"
+            title: editedBody.title,
+            body: editedBody.body
         ***REMOVED***
     ***REMOVED***;
 
     var options = ***REMOVED***
-        priority: "high",
-        timeToLive: 60 * 60 * 24
+        priority: editedBody.priority,
+        timeToLive: JSON.parse(editedBody.timetolive)
     ***REMOVED***;
 
     admin.messaging().sendToDevice(registrationToken, payload, options)
         .then(function (response) ***REMOVED***
-            console.log("Successfully sent message:", response.results[0]);
-            res.status(200).send("it worked. (hopefully monkaS)");
+            //console.log("Successfully sent message:", response.results[0]);
+            res.status(200).send("Message Sent!");
         ***REMOVED***)
         .catch(function (error) ***REMOVED***
-            console.log("Error sending message:", error);
-            res.status(500).send("An error occured. Blame Konrad");
+            //console.log("Error sending message:", error);
+            res.status(500).send("An error occured. Blame Konrad <br>" + error);
         ***REMOVED***);
 
     console.log(editedBody);
