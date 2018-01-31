@@ -38,7 +38,7 @@ router.post('/', function (req, res) ***REMOVED***
       ***REMOVED***;*/
 
     var payload = ***REMOVED***
-        notification: ***REMOVED***
+        data: ***REMOVED***
             title: editedBody.title,
             body: editedBody.body
         ***REMOVED***
