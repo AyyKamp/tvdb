@@ -23,10 +23,9 @@ router.post('/', function (req, res) ***REMOVED***
     ***REMOVED*** 
     
     
-    tvdb.getSeriesAllById(editedBody.series_id_all)
+    tvdb.getSeriesAllById(editedBody.series_id)
     .then(response => ***REMOVED***
         res.status(200).send(response);
-        res.status(200).send(response.episodes);
     ***REMOVED***)
     .catch(error => ***REMOVED***console.log(error)***REMOVED***);
 
