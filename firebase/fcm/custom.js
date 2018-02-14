@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var path = require('path');
-var admin = require('./admin.js')
-
-let tvdb = require(__dirname + '/../tvdb');
+var admin = require(path.join(__dirname + "/../admin.js"));
 
 var html;
 
