@@ -67,7 +67,7 @@ var router = express.Router();
 var bodyParser = require("body-parser");
 var path = require("path");
 
-let tvdb = require(__dirname + "/../tvdb");
+let tvdb = require(__dirname + "/../../tvdb");
 
 var html;
 
@@ -99,7 +99,8 @@ router.post("/", function(req, res) ***REMOVED***
       for (var i = 0; i < eps.length; i++) ***REMOVED***
         dates[i] = new Date(`$***REMOVED***eps[i].firstAired***REMOVED*** $***REMOVED***response.airsTime***REMOVED***`);
       ***REMOVED***
-      console.log(arrayFunctions)
+      var latestEpisode = arrayFunctions.latestFunction(dates, eps);
+      latestEpisode.date = new Date(`$***REMOVED***latestEpisode.firstAired***REMOVED*** $***REMOVED***response.airsTime***REMOVED***`)
       res.status(200).send(arrayFunctions.latestFunction(dates, eps));
 
     ***REMOVED***)
@@ -109,7 +110,7 @@ router.post("/", function(req, res) ***REMOVED***
 ***REMOVED***);
 
 router.get("/", function(req, res) ***REMOVED***
-  res.status(200).sendFile(path.join(__dirname + "/../html/site.html"));
+  res.status(200).sendFile(path.join(__dirname + "/../../html/getLatestEpisodeById.html"));
 ***REMOVED***);
 
 module.exports = router;

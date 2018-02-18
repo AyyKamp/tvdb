@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var path = require('path');
-
-let tvdb = require(__dirname + '/../tvdb');
+let tvdb = require(__dirname + '/../../tvdb');
 
 var html;
 
@@ -20,19 +19,20 @@ router.post('/', function (req, res) ***REMOVED***
     if(Object.values(req.body) == "") ***REMOVED***
         var editedBody = Object.keys(req.body)
         editedBody = JSON.parse(editedBody[0])
-    ***REMOVED*** 
+    ***REMOVED***    
     
     
-    tvdb.getSeriesAllById(editedBody.series_id)
+    tvdb.getSeriesByName(editedBody.series_name)
     .then(response => ***REMOVED***
-        res.status(200).send(response);
-    ***REMOVED***)
-    .catch(error => ***REMOVED***console.log(error)***REMOVED***);
-
+            res.status(200).send(response);
+        ***REMOVED***)
+        .catch(error => ***REMOVED***
+            console.log(error);
+            res.status(500).send("An error occured. Blame Konrad");
+        ***REMOVED***);
 ***REMOVED***);
 
 router.get('/', function (req, res) ***REMOVED***
-    res.status(200).sendFile(path.join(__dirname + "/../html/site.html"));
+    res.status(200).sendFile(path.join(__dirname + "/../../html/getSeriesByName.html"));
 ***REMOVED***);
-
 module.exports = router;
