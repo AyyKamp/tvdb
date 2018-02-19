@@ -16,7 +16,6 @@
   ***REMOVED***,
   "scripts": ***REMOVED***
     "test": "nodemon server.js",
-    "start": "node server.js",
-    "build": "babel ./gets -d lib/"
+    "start": "node server.js"
   ***REMOVED***
 ***REMOVED***

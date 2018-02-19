@@ -89,8 +89,7 @@ router.post("/", function(req, res) ***REMOVED***
     editedBody = JSON.parse(editedBody[0]);
   ***REMOVED***
 
-  tvdb
-    .getSeriesAllById(editedBody.series_id)
+  tvdb.getSeriesAllById(editedBody.series_id)
     .then(response => ***REMOVED***
       var eps = response.episodes;
       //res.status(200).send(eps[eps.length - 1]);
@@ -101,7 +100,7 @@ router.post("/", function(req, res) ***REMOVED***
       ***REMOVED***
       var latestEpisode = arrayFunctions.latestFunction(dates, eps);
       latestEpisode.date = new Date(`$***REMOVED***latestEpisode.firstAired***REMOVED*** $***REMOVED***response.airsTime***REMOVED***`)
-      res.status(200).send(arrayFunctions.latestFunction(dates, eps));
+      res.status(200).send(latestEpisode);
 
     ***REMOVED***)
     .catch(error => ***REMOVED***
