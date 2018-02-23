@@ -17,5 +17,9 @@
   "scripts": ***REMOVED***
     "test": "nodemon server.js",
     "start": "node server.js"
+  ***REMOVED***,
+  ***REMOVED*** "engines" : ***REMOVED*** 
+    "node" : "8.9.4" 
+    ***REMOVED*** 
   ***REMOVED***
 ***REMOVED***
