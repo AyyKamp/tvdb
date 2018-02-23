@@ -1,19 +1,18 @@
 let express = require('express');
 let app = express();
 
-var seriesNameController = require('./getSeriesByName/nameController.js');
-var seriesIdController = require("./getSeriesById/seriesIdController.js");
-var allController = require("./getSeriesAllById/allController.js");
-var latestep = require('./getLatestEpisodeById/latestEpController.js');
-var custom = require('./firebase/fcm/custom.js');
-var firestore = require('./firebase/firestore.js');
+var seriesNameController = require('./gets/getSeriesByName/nameController.js');
+var seriesIdController = require("./gets/getSeriesById/seriesIdController.js");
+var episodesController = require("./gets/getEpisodesBySeriesId/episodesController.js");
+var latestep = require('./gets/getLatestEpisodeById/latestEpController.js');
+var custom = require('./fcm/custom.js');
+var firestore = require("./fcm/firestore.js");
 
 app.use('/getSeriesByName', seriesNameController);
 app.use('/getSeriesById', seriesIdController);
-app.use('/getSeriesAllById', allController);
+app.use('/getEpisodesBySeriesId', episodesController);
 app.use('/getLatestEpisodeById', latestep);
 app.use("/fcm",custom);
 app.use("/fcmcstm",custom);
-app.use('/firestore', firestore);
 
 module.exports = app;
