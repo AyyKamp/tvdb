@@ -37,7 +37,7 @@ router.post('/', function (req, res) ***REMOVED***
         "watchlist": JSON.parse(data3).wl
     ***REMOVED***;
 
-    db.collection("users").doc('fedor').set(data).then(() =>***REMOVED***
+    db.collection("users").doc().set(data2).then(() =>***REMOVED***
         console.log(data.id + " added. Token: " + data.token)
         db.collection("users").doc('fedor').collection("watchlists").doc("watchlist:" + data.token).set(data2).then(() =>***REMOVED***
             console.log("awwyiss");
@@ -47,7 +47,7 @@ router.post('/', function (req, res) ***REMOVED***
     ***REMOVED***).catch(error=>***REMOVED***
         console.log("Konrad wtf: " + error);
     ***REMOVED***)
-    
+    res.status(200).send("User added!");
 
 ***REMOVED***);
 
