@@ -41,8 +41,7 @@ router.post('/', function (req, res) ***REMOVED***
     ***REMOVED***;
 
     var options = ***REMOVED***
-        priority: editedBody.priority,
-        timeToLive: JSON.parse(editedBody.timetolive)
+        priority: editedBody.priority
     ***REMOVED***;
 
     admin.messaging().sendToDevice(registrationToken, payload, options)
