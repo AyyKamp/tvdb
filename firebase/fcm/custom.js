@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var path = require('path');
-var admin = require(path.join(__dirname + "/../admin.js"));
+var admin = require('./admin.js')
 
 var middleware = function (req, res, next) ***REMOVED***
     res.header("Access-Control-Allow-Origin", "*");
@@ -41,7 +41,7 @@ router.post('/', function (req, res) ***REMOVED***
     ***REMOVED***;
 
     var options = ***REMOVED***
-        priority: editedBody.priority,
+        priority: editedBody.priority
     ***REMOVED***;
 
     admin.messaging().sendToDevice(registrationToken, payload, options)
