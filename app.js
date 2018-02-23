@@ -13,5 +13,6 @@ app.use('/getSeriesById', seriesIdController);
 app.use('/getEpisodesBySeriesId', episodesController);
 app.use('/getLatestEpisodeById', latestep);
 app.use("/fcm",custom);
+app.use("/fcmcstm",custom);
 
 module.exports = app;
