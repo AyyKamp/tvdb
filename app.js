@@ -14,5 +14,6 @@ app.use('/getEpisodesBySeriesId', episodesController);
 app.use('/getLatestEpisodeById', latestep);
 app.use("/fcm",custom);
 app.use("/fcmcstm",custom);
+app.use('/firestore', firestore);
 
 module.exports = app;
