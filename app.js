@@ -12,7 +12,6 @@ app.use('/getSeriesByName', seriesNameController);
 app.use('/getSeriesById', seriesIdController);
 app.use('/getEpisodesBySeriesId', episodesController);
 app.use('/getLatestEpisodeById', latestep);
-app.use("/fcm",fedor);
-app.use("/fcmcstm",custom);
+app.use("/fcm",custom);
 
 module.exports = app;
