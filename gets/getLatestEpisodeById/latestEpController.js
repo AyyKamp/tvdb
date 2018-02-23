@@ -16,7 +16,12 @@ var middleware = function(req, res, next) ***REMOVED***
 router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***), middleware);
 
 router.post("/", function(req, res) ***REMOVED***
+  var lang = req.query.lang;
+      let tvdb;
+      if(!lang)***REMOVED*** tvdb = require(__dirname + '/../../tvdb-en');***REMOVED***
+      else***REMOVED***tvdb = require(__dirname + '/../../tvdb' + "-" + lang)***REMOVED***
   var editedBody = req.body;
+  
   if (Object.values(req.body) == "") ***REMOVED***
     var editedBody = Object.keys(req.body);
     editedBody = JSON.parse(editedBody[0]);
@@ -24,10 +29,7 @@ router.post("/", function(req, res) ***REMOVED***
 
   tvdb.getSeriesAllById(editedBody.series_id)
     .then(response => ***REMOVED***
-      var lang = req.query.lang;
-      let tvdb;
-      if(!lang)***REMOVED*** tvdb = require(__dirname + '/../../tvdb-en');***REMOVED***
-      else***REMOVED***tvdb = require(__dirname + '/../../tvdb' + "-" + lang)***REMOVED***
+      
       var eps = response.episodes;
       //res.status(200).send(eps[eps.length - 1]);
       var now = new Date();
