@@ -34,16 +34,13 @@ router.post('/', function (req, res) ***REMOVED***
     var data3 = "***REMOVED***\"wl\":" + editedBody.watchlist + "***REMOVED***";
     console.log(data3)
     var data2 = ***REMOVED***
-        "watchlist": JSON.parse(data3).wl
+        "watchlist": JSON.parse(data3).wl,
+        "uid": editedBody.uid,
+        "token": editedBody.token
     ***REMOVED***;
 
     db.collection("users").doc().set(data2).then(() =>***REMOVED***
-        console.log(data.id + " added. Token: " + data.token)
-        db.collection("users").doc('fedor').collection("watchlists").doc("watchlist:" + data.token).set(data2).then(() =>***REMOVED***
-            console.log("awwyiss");
-        ***REMOVED***).catch(err=>***REMOVED***
-            console.log("kaonrad wtf: " + err);
-        ***REMOVED***);
+        console.log("it work")
     ***REMOVED***).catch(error=>***REMOVED***
         console.log("Konrad wtf: " + error);
     ***REMOVED***)
