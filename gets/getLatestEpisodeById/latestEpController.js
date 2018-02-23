@@ -89,7 +89,7 @@ router.post("/", function(req, res) ***REMOVED***
     editedBody = JSON.parse(editedBody[0]);
   ***REMOVED***
 
-  tvdb.getSeriesAllById(editedBody.series_id)
+  /*tvdb.getSeriesAllById(editedBody.series_id)
     .then(response => ***REMOVED***
       var eps = response.episodes;
       //res.status(200).send(eps[eps.length - 1]);
@@ -105,7 +105,15 @@ router.post("/", function(req, res) ***REMOVED***
     ***REMOVED***)
     .catch(error => ***REMOVED***
       console.log(error);
+    ***REMOVED***);*/
+    tvdb.getLanguages()
+    .then(response => ***REMOVED*** 
+      res.status(200).send(response);
+    ***REMOVED***)
+    .catch(error => ***REMOVED*** 
+      res.status(500);
     ***REMOVED***);
+
 ***REMOVED***);
 
 router.get("/", function(req, res) ***REMOVED***
