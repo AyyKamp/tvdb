@@ -4,8 +4,6 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var admin = require(path.join(__dirname + "/../admin.js"));
 
-var html;
-
 var middleware = function (req, res, next) ***REMOVED***
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
