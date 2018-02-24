@@ -35,12 +35,12 @@ router.post('/', function (req, res) ***REMOVED***
     console.log(data3)
     var data2 = ***REMOVED***
         "watchlist": JSON.parse(data3).wl,
-        "uid": editedBody.uid,
-        "token": editedBody.token,
-        "email": editedBody.email,
-        "displayname":editedBody.displayname,
-        "phonenumber":editedBody.phonenumber,
-        "providerid":editedBody.providerid
+        "uid": editedBody.uid||"Nothing speicified",
+        "token": editedBody.token||"Nothing speicified",
+        "email": editedBody.email||"Nothing speicified",
+        "displayname":editedBody.displayname||"Nothing speicified",
+        "phonenumber":editedBody.phonenumber||"Nothing speicified",
+        "providerid":editedBody.providerid||"Nothing speicified"
     ***REMOVED***;
     /*
     var userRef = db.collection("users");
