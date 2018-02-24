@@ -16,7 +16,7 @@ var middleware = function (req, res, next) ***REMOVED***
 router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***), middleware);
 
 router.post('/', function (req, res) ***REMOVED***
-    console.log(req.body)
+    //console.log(req.body)
     var editedBody = req.body;
     if (Object.values(req.body) == "") ***REMOVED***
         var editedBody = Object.keys(req.body)
@@ -30,15 +30,32 @@ router.post('/', function (req, res) ***REMOVED***
         "token": editedBody.token
     ***REMOVED***;
 
-    console.log(Object.keys(req.body))
+    //console.log(Object.keys(req.body))
     var data3 = "***REMOVED***\"wl\":" + editedBody.watchlist + "***REMOVED***";
     console.log(data3)
     var data2 = ***REMOVED***
         "watchlist": JSON.parse(data3).wl,
         "uid": editedBody.uid,
-        "token": editedBody.token
+        "token": editedBody.token,
+        "email": editedBody.email,
+        "displayname":editedBody.displayname,
+        "phonenumber":editedBody.phonenumber,
+        "providerid":editedBody.providerid
     ***REMOVED***;
+    /*
+    var userRef = db.collection("users");
 
+    var query = userRef.where('uid', '==', data2).get()
+    .then(snapshot => ***REMOVED***
+        snapshot.forEach(doc => ***REMOVED***
+            console.log(doc.exists());
+        ***REMOVED***);
+    ***REMOVED***)
+    .catch(err => ***REMOVED***
+        console.log('Error getting documents', err);
+    ***REMOVED***);*/
+
+    
     db.collection("users").doc().set(data2).then(() =>***REMOVED***
         console.log("it work")
     ***REMOVED***).catch(error=>***REMOVED***
