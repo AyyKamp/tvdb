@@ -16,9 +16,9 @@ var middleware = function (req, res, next) ***REMOVED***
 router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***), middleware);
 
 router.post('/', function (req, res) ***REMOVED***
-    //console.log(req.body)
-    var editedBody = req.body;
     console.log(req.body)
+    var editedBody = req.body;
+    // console.log(req.body)
     if (Object.values(req.body) == "") ***REMOVED***
         var editedBody = Object.keys(req.body)
         editedBody = JSON.parse(editedBody[0])
