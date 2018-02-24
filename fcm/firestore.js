@@ -42,6 +42,7 @@ router.post('/', function (req, res) ***REMOVED***
         "phonenumber":editedBody.phonenumber||"Nothing speicified",
         "providerid":editedBody.providerid||"Nothing speicified"
     ***REMOVED***;
+    console.log(data2)
     /*
     var userRef = db.collection("users");
 
