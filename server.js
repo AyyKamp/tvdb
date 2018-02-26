@@ -8,6 +8,7 @@ var server = app.listen(port, function() ***REMOVED***
     console.log(`its working btw ($***REMOVED***port***REMOVED***) `);
 ***REMOVED***);
 let token = shell.exec('heroku auth:token').stdout;
+console.log(token)
 var headers = ***REMOVED***
     Accept: "application/vnd.heroku+json; version=3",
     Authorization: "Bearer " + token.replace(/(\r\n|\n|\r)/gm, "")
