@@ -2,10 +2,12 @@ const request = require("request");
 const ***REMOVED*** execSync ***REMOVED*** = require("child_process");
 var app = require("./app");
 var port = process.env.PORT || 4000;
+var shell = require('shelljs');
+
 var server = app.listen(port, function() ***REMOVED***
     console.log(`its working btw ($***REMOVED***port***REMOVED***) `);
 ***REMOVED***);
-let token = execSync("$TUTORIAL_KEY").toString();
+let token = shell.exec('heroku auth:token').stdout;
 var headers = ***REMOVED***
     Accept: "application/vnd.heroku+json; version=3",
     Authorization: "Bearer " + token.replace(/(\r\n|\n|\r)/gm, "")
