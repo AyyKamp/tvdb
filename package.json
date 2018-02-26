@@ -8,7 +8,9 @@
     "express": "^4.16.2",
     "firebase": "^4.9.1",
     "firebase-admin": "^5.8.1",
-    "node-tvdb": "^3.2.0"
+    "heroku-client": "^3.0.6",
+    "node-tvdb": "^3.2.0",
+    "request-promise": "^4.2.2"
   ***REMOVED***,
   "devDependencies": ***REMOVED***
     "babel-cli": "^6.26.0",
@@ -17,9 +19,10 @@
   ***REMOVED***,
   "scripts": ***REMOVED***
     "test": "nodemon server.js",
+    "yes": "nodemon tvdb-de.js",
     "start": "node server.js"
   ***REMOVED***,
-  "engines" : ***REMOVED*** 
-    "node" : "8.9.4" 
+  "engines": ***REMOVED***
+    "node": "8.9.4"
   ***REMOVED***
 ***REMOVED***
