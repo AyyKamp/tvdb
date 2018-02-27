@@ -8,9 +8,9 @@ var shell = require('shelljs');
 var server = app.listen(port, function() ***REMOVED***
     console.log(`its working btw ($***REMOVED***port***REMOVED***) `);
 ***REMOVED***);
-let test = shell.exec('heroku auth:token').stdout
+let test = shell.exec('npm install heroku-client').stdout
 console.log(test)
-let token = shell.exec('heroku auth:token').stdout || process.env.HEROKU_KEY;
+let token = shell.exec('heroku auth:token').stdout;
 console.log(process.env.HEROKU_KEY)
 var headers = ***REMOVED***
     Accept: "application/vnd.heroku+json; version=3",
