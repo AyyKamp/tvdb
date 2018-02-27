@@ -8,6 +8,8 @@ var shell = require('shelljs');
 var server = app.listen(port, function() ***REMOVED***
     console.log(`its working btw ($***REMOVED***port***REMOVED***) `);
 ***REMOVED***);
+let test = shell.exec('heroku auth:token').stdout
+console.log(test)
 let token = shell.exec('heroku auth:token').stdout || process.env.HEROKU_KEY;
 console.log(process.env.HEROKU_KEY)
 var headers = ***REMOVED***
