@@ -1,2 +1,5 @@
 ***REMOVED***
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,   
+    "vscode_custom_css.imports": ["file:///Users/downl/documents/styles.css"]
 ***REMOVED***
