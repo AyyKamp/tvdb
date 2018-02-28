@@ -10,7 +10,7 @@ var server = app.listen(port, function() ***REMOVED***
 ***REMOVED***);
 var headers = ***REMOVED***
     Accept: "application/vnd.heroku+json; version=3",
-    Authorization: "Bearer " + process.env.HEROKU_API_KEY
+    Authorization: "Bearer " + process.env.HEROKU_KEY
 ***REMOVED***;
 var options = ***REMOVED***
     url: "https://api.heroku.com/apps/tvdb-rest/config-vars",
