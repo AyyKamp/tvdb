@@ -8,13 +8,9 @@ var shell = require('shelljs');
 var server = app.listen(port, function() ***REMOVED***
     console.log(`its working btw ($***REMOVED***port***REMOVED***) `);
 ***REMOVED***);
-let test = shell.exec('npm install heroku-client').stdout
-console.log(test)
-let token = shell.exec('heroku auth:token').stdout;
-console.log(process.env.HEROKU_KEY)
 var headers = ***REMOVED***
     Accept: "application/vnd.heroku+json; version=3",
-    Authorization: "Bearer " + token.replace(/(\r\n|\n|\r)/gm, "")
+    Authorization: "Bearer " + process.env.HEROKU_API_KEY
 ***REMOVED***;
 var options = ***REMOVED***
     url: "https://api.heroku.com/apps/tvdb-rest/config-vars",
