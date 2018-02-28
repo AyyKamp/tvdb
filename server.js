@@ -25,8 +25,9 @@ function callback(error, response, body) ***REMOVED***
     ***REMOVED***
 ***REMOVED***
 request(options, callback)
-
+console.log(Date.now())
 var http = require("http");
 setInterval(function() ***REMOVED***
     http.get("http://tvdb-rest.herokuapp.com");
+    console.log(Date.now())
 ***REMOVED***, 300000); // every 5 minutes (300000)
