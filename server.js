@@ -19,13 +19,12 @@ var options = ***REMOVED***
 function callback(error, response, body) ***REMOVED***
     if (!error && response.statusCode == 200) ***REMOVED***
         process.env.TVDB_API_KEY = JSON.parse(body).TVDB_API_KEY;
-        console.log(true)
+        console.log(process.env.TVDB_API_KEY)
     ***REMOVED*** else ***REMOVED***
         console.log(error, response.statusCode, body);
     ***REMOVED***
 ***REMOVED***
 request(options, callback)
-console.log(Date.now())
 var http = require("http");
 setInterval(function() ***REMOVED***
     http.get("http://tvdb-rest.herokuapp.com");

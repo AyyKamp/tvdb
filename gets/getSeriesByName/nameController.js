@@ -2,46 +2,38 @@ var express = require("express");
 var router = express.Router();
 var bodyParser = require("body-parser");
 var path = require("path");
-let tvdb = require(__dirname + "/../../tvdb");
 
-var middleware = function(req, res, next) ***REMOVED***
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
+var middleware = function (req, res, next) ***REMOVED***
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept"
+	);
+	next();
 ***REMOVED***;
 
 router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***), middleware);
 
-router.post("/", function(req, res) ***REMOVED***
-  var editedBody = req.body;
-  
-  if (Object.values(req.body) == "") ***REMOVED***
-    var editedBody = Object.keys(req.body);
-    editedBody = JSON.parse(editedBody[0]);
-  ***REMOVED***
-  var lang = req.query.lang;
-  if (!lang && tvdb.createTvdbClient) ***REMOVED***
-    tvdb = tvdb.createTvdbClient("en");
-  ***REMOVED***else if(tvdb.createTvdbClient)***REMOVED***
-    tvdb = tvdb.createTvdbClient(lang);
-  ***REMOVED***
-  tvdb
-    .getSeriesByName(editedBody.series_name)
-    .then(response => ***REMOVED***
-      res.status(200).send(response);
-    ***REMOVED***)
-    .catch(error => ***REMOVED***
-      console.log(error);
-      res.status(500).send("An error occured. Blame Konrad");
-    ***REMOVED***);
+router.get("/", function (req, res) ***REMOVED***
+	var lang = req.query.lang || "en";
+	var tvdb = require(`$***REMOVED***__dirname***REMOVED***/../../tvdb_$***REMOVED***lang***REMOVED***.js`);
+	
+	var editedBody = req.query;
+	var lang = req.query.lang;
+	tvdb
+		.getSeriesByName(editedBody.series_name)
+		.then(response => ***REMOVED***
+			res.status(200).send(response);
+		***REMOVED***)
+		.catch(error => ***REMOVED***
+			console.log(error)
+			let status = error.response.status;
+			res.status(status).send(`$***REMOVED***status***REMOVED*** -- $***REMOVED***error.response.statusText***REMOVED***`);
+		***REMOVED***);
+	/*tvdb.getLanguages()
+		.then(response => ***REMOVED*** console.log(response) ***REMOVED***)
+		.catch(error => ***REMOVED***  ***REMOVED***);*/
+	
 ***REMOVED***);
 
-router.get("/", function(req, res) ***REMOVED***
-  res
-    .status(200)
-    .sendFile(path.join(__dirname + "/../../html/getSeriesByName.html"));
-***REMOVED***);
 module.exports = router;
