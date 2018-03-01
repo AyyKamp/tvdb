@@ -5,7 +5,7 @@ var seriesNameController = require('./gets/getSeriesByName/nameController.js');
 var seriesIdController = require("./gets/getSeriesById/seriesIdController.js");
 var episodesController = require("./gets/getEpisodesBySeriesId/episodesController.js");
 var latestep = require('./gets/getLatestEpisodeById/latestEpController.js');
-var postWatchlist = require('./fcm/postWatchlist.js');
+var postWatchlist = require('./firebase/postWatchlist.js');
 //var firestore = require("./fcm/firestore.js");
 
 app.use('/getSeriesByName', seriesNameController);

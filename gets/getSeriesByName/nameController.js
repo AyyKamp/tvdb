@@ -30,9 +30,9 @@ router.get("/", function (req, res) ***REMOVED***
 			let status = error.response.status;
 			res.status(status).send(`$***REMOVED***status***REMOVED*** -- $***REMOVED***error.response.statusText***REMOVED***`);
 		***REMOVED***);
-	/*tvdb.getLanguages()
+	tvdb.getLanguages()
 		.then(response => ***REMOVED*** console.log(response) ***REMOVED***)
-		.catch(error => ***REMOVED***  ***REMOVED***);*/
+		.catch(error => ***REMOVED***  ***REMOVED***);
 	
 ***REMOVED***);
 
