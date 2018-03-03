@@ -9,9 +9,10 @@ var postWatchlist = require('./firebase/postWatchlist.js');
 var watchlistNotif = require('./firebase/watchlistNotif.js');
 var fcm = require('./firebase/fcm.js');
 var postToken = require('./firebase/postToken.js');
+var redir = require('./html/redir.js')
 
 //var firestore = require("./fcm/firestore.js");
-
+app.use('/',redir)
 app.use('/getSeriesByName', seriesNameController);
 app.use('/getSeriesById', seriesIdController);
 app.use('/getEpisodesBySeriesId', episodesController);
