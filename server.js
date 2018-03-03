@@ -19,7 +19,6 @@ var options = ***REMOVED***
 function callback(error, response, body) ***REMOVED***
     if (!error && response.statusCode == 200) ***REMOVED***
         process.env.TVDB_API_KEY = JSON.parse(body).TVDB_API_KEY;
-        console.log(process.env.TVDB_API_KEY)
     ***REMOVED*** else ***REMOVED***
         console.log(error, response.statusCode, body);
     ***REMOVED***
