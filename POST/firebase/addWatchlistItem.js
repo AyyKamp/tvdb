@@ -16,7 +16,6 @@ var middleware = function(req, res, next) ***REMOVED***
 ***REMOVED***;
 
 router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***), middleware);
-
 router.post("/", function(req, res) ***REMOVED***
   let body = req.body;
   if (!body.uid) return res.status(400).send("cmon bruh");
