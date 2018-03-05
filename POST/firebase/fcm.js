@@ -1,27 +1,15 @@
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-var path = require('path');
-var admin = require("./.functions/admin.js");
-const messageFunctions = require("./.functions/messageFunctions.js");
-
-var middleware = function (req, res, next) ***REMOVED***
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-***REMOVED***
-
-router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***), middleware);
+const express = require('express');
+const router = express.Router();
+const admin = require('./.functions/admin.js');
+const messageFunctions = require('./.functions/messageFunctions.js');
 
 router.post('/', function (req, res) ***REMOVED***
     messageFunctions.sendMessage(req.body)
-    return res.status(200).send("Message Sent!");
-    console.log(req.body);
-    res.status(200).send("Message Sent!");
+    return res.status(200).send('Message Sent!');
 ***REMOVED***);
 
 router.get('/', function (req, res) ***REMOVED***
-    res.status(200).sendFile(path.join(__dirname + "/../html/site.html"));
+    res.status(200).sendFile(path.join(__dirname + '/../html/site.html'));
 ***REMOVED***);
 
 module.exports = router;

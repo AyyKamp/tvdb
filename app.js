@@ -1,21 +1,31 @@
-let express = require('express');
-let app = express();
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser')
+const app = express();
 
-var seriesNameController = require('./GET/getSeriesByName.js');
-var seriesIdController = require("./GET/getSeriesById.js");
-var episodesController = require("./GET/getEpisodesBySeriesId.js");
-var latestep = require('./GET/getLatestEpisodeById.js');
-var postWatchlist = require('./POST/firebase/postWatchlist.js');
-var getWatchlist = require('./POST/firebase/getWatchlist.js');
-var addWatchlistItem = require('./POST/firebase/addWatchlistItem.js');
-var removeWatchlistItem = require('./POST/firebase/removeWatchlistItem.js');
-var watchlistNotif = require('./POST/firebase/watchlistNotif.js');
-var fcm = require('./POST/firebase/fcm.js');
-var postToken = require('./POST/firebase/postToken.js');
-var redir = require('./html/redir.js')
+let cors_content = function(req, res, next) ***REMOVED***
+  res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+***REMOVED***;
 
-removeWatchlistItem
-//var firestore = require("./fcm/firestore.js");
+app.use(cors(),bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***),bodyParser.json(), cors_content)
+
+let seriesNameController = require('./GET/getSeriesByName.js');
+let seriesIdController = require('./GET/getSeriesById.js');
+let episodesController = require('./GET/getEpisodesBySeriesId.js');
+let latestep = require('./GET/getLatestEpisodeById.js');
+let postWatchlist = require('./POST/firebase/postWatchlist.js');
+let getWatchlist = require('./POST/firebase/watchlist/getWatchlist.js');
+let addWatchlistItem = require('./POST/firebase/watchlist/addWatchlistItem.js');
+let removeWatchlistItem = require('./POST/firebase/watchlist/removeWatchlistItem.js');
+let watchlistNotif = require('./POST/firebase/watchlist/watchlistNotif.js');
+let fcm = require('./POST/firebase/fcm.js');
+let postToken = require('./POST/firebase/postToken.js');
+let redir = require('./redir.js')
+
 app.use('/getSeriesByName', seriesNameController);
 app.use('/getSeriesById', seriesIdController);
 app.use('/getEpisodesBySeriesId', episodesController);
@@ -25,10 +35,9 @@ app.use('/getWatchlist', getWatchlist);
 app.use('/addWatchlistItem', addWatchlistItem);
 app.use('/removeWatchlistItem', removeWatchlistItem);
 app.use('/watchlistNotif', watchlistNotif);
-app.use("/fcm", fcm);
-app.use("/fcmcstm", fcm);
-app.use("/postToken", postToken);
+app.use('/fcm', fcm);
+app.use('/fcmcstm', fcm);
+app.use('/postToken', postToken);
 app.use('/', redir);
-//app.use('/firestore', firestore);
 
 module.exports = app;

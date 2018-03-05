@@ -1,31 +1,38 @@
-require('dotenv').config()
-const request = require("request");
-const ***REMOVED*** execSync ***REMOVED*** = require("child_process");
-var app = require("./app");
-var port = process.env.PORT || 4000;
-var shell = require('shelljs');
+require('dotenv').config();
+const request = require('request');
+const ***REMOVED*** execSync ***REMOVED*** = require('child_process');
+const app = require('./app');
+let port = process.env.PORT || 4000;
 
 var server = app.listen(port, function() ***REMOVED***
-    console.log(`its working btw ($***REMOVED***port***REMOVED***) `);
+  console.log(`its working btw ($***REMOVED***port***REMOVED***) `);
 ***REMOVED***);
-var headers = ***REMOVED***
-    Accept: "application/vnd.heroku+json; version=3",
-    Authorization: "Bearer " + process.env.HEROKU_KEY
+let headers = ***REMOVED***
+  Accept: 'application/vnd.heroku+json; version=3',
+  Authorization: 'Bearer ' + process.env.HEROKU_KEY
 ***REMOVED***;
-var options = ***REMOVED***
-    url: "https://api.heroku.com/apps/tvdb-rest/config-vars",
-    headers: headers
+let options = ***REMOVED***
+  url: 'https://api.heroku.com/apps/tvdb-rest/config-vars',
+  headers: headers
 ***REMOVED***;
 function callback(error, response, body) ***REMOVED***
-    if (!error && response.statusCode == 200) ***REMOVED***
-        process.env.TVDB_API_KEY = JSON.parse(body).TVDB_API_KEY;
-    ***REMOVED*** else ***REMOVED***
-        console.log(error, response.statusCode, body);
-    ***REMOVED***
+  if (!error && response.statusCode == 200) ***REMOVED***
+    process.env.TVDB_API_KEY = JSON.parse(body).TVDB_API_KEY;
+  ***REMOVED*** else ***REMOVED***
+    console.log(error, response.statusCode, body);
+  ***REMOVED***
 ***REMOVED***
-request(options, callback)
-var http = require("http");
+request(options, callback);
+
 setInterval(function() ***REMOVED***
-    http.get("http://tvdb-rest.herokuapp.com");
-    console.log(Date.now())
-***REMOVED***, 300000); // every 5 minutes (300000)
+  request(
+    ***REMOVED***
+      url: 'https://tvdb-rest.herokuapp.com/'
+    ***REMOVED***,
+    () => ***REMOVED***
+      console.log(Date.now());
+    ***REMOVED***
+  );
+***REMOVED***, 300000); 
+// Der Server pingt sich selbst alle 5 Minuten, damit er nicht in einen Standby Modus verfällt. 
+// Dies ist eine Limitierung des kostenlosen Angebots von Heroku.
