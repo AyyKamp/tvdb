@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var path = require('path');
-var admin = require('./admin.js');
-const messageFunctions = require('./sendMessage.js')
+var admin = require("./.functions/admin.js");
+const messageFunctions = require("./.functions/messageFunctions.js");
 
 var middleware = function (req, res, next) ***REMOVED***
     res.header("Access-Control-Allow-Origin", "*");

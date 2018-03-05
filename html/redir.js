@@ -11,7 +11,6 @@ var middleware = function (req, res, next) ***REMOVED***
 ***REMOVED***;
 
 router.get("/", function (req, res) ***REMOVED***
-    console.log("aha")
     return res.redirect(301, 'http://www.tvseriesapp.tk/#/');
     
 ***REMOVED***);

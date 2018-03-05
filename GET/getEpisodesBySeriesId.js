@@ -1,4 +1,3 @@
-var arrayFunctions = require("./arrayFunctions.js")
 var express = require("express");
 var router = express.Router();
 var bodyParser = require("body-parser");
@@ -16,31 +15,20 @@ var middleware = function (req, res, next) ***REMOVED***
 router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***), middleware);
 
 router.get("/", function (req, res) ***REMOVED***
-	var lang = req.query.lang || "en";
-	var tvdb = require(`$***REMOVED***__dirname***REMOVED***/../../tvdb_$***REMOVED***lang***REMOVED***.js`);
 	var editedBody = req.query;
+	var lang = req.query.lang || "en";
+	var tvdb = require(`$***REMOVED***__dirname***REMOVED***/../tvdb_$***REMOVED***lang***REMOVED***.js`);
 
-	tvdb.getSeriesAllById(editedBody.series_id)
+	tvdb
+		.getSeriesAllById(editedBody.series_id)
 		.then(response => ***REMOVED***
-
-			var eps = response.episodes;
-			//res.status(200).send(eps[eps.length - 1]);
-			var now = new Date();
-			var dates = [];
-			for (var i = 0; i < eps.length; i++) ***REMOVED***
-				dates[i] = new Date(`$***REMOVED***eps[i].firstAired***REMOVED*** $***REMOVED***response.airsTime***REMOVED***`);
-			***REMOVED***
-			var latestEpisode = arrayFunctions.latestFunction(dates, eps);
-			latestEpisode.date = new Date(`$***REMOVED***latestEpisode.firstAired***REMOVED*** $***REMOVED***response.airsTime***REMOVED***`)
-			res.status(200).send(latestEpisode);
-
+			res.status(200).send(response.episodes);
 		***REMOVED***)
 		.catch(error => ***REMOVED***
-			console.log(error)
+			console.log(error);
 			let status = error.response.status
 			res.status(status).send(`$***REMOVED***status***REMOVED*** -- $***REMOVED***error.response.statusText***REMOVED***`);
 		***REMOVED***);
-
 ***REMOVED***);
 
 module.exports = router;

@@ -16,7 +16,7 @@ router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***), mi
 
 router.get("/", function (req, res) ***REMOVED*** // Hier wird definiert das dieser Endpunkt GET benutzen soll. Dann wird eine Methode angegeben , die jedes Mal ausgeführt werden soll, wenn der Enpunkt  kontaktiert wird. Dabei stehen die Parameter res und req jeweils für rquest (zu dt. Anfrage) und res (zu dt. Antwort)
 	var lang = req.query.lang || "en"; //Variable lang ist entweder der Inhalt des Query Strings oder standardmäßig "en" 
-	var tvdb = require(`$***REMOVED***__dirname***REMOVED***/../../tvdb_$***REMOVED***lang***REMOVED***.js`); //entsprechend der Variable lang wird das tvdb.js Modul importiert.
+	var tvdb = require(`$***REMOVED***__dirname***REMOVED***/../tvdb_$***REMOVED***lang***REMOVED***.js`); //entsprechend der Variable lang wird das tvdb.js Modul importiert.
 	
 	var editedBody = req.query;
 	var lang = req.query.lang;

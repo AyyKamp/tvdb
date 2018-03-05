@@ -15,7 +15,7 @@ router.get('/', function (req, res) ***REMOVED***
     var editedBody = req.query;
     console.log(req.query.lang)
     var lang = req.query.lang || "en";
-	var tvdb = require(`$***REMOVED***__dirname***REMOVED***/../../tvdb_$***REMOVED***lang***REMOVED***.js`);
+	var tvdb = require(`$***REMOVED***__dirname***REMOVED***/../tvdb_$***REMOVED***lang***REMOVED***.js`);
     
     tvdb.getSeriesById(editedBody.series_id)
     .then(response => ***REMOVED***

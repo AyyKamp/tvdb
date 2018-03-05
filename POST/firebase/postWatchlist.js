@@ -3,7 +3,7 @@ var router = express.Router();
 var bodyParser = require("body-parser");
 var path = require("path");
 
-var admin = require("./admin.js");
+var admin = require("./.functions/admin.js");
 const db = admin.firestore();
 
 var middleware = function (req, res, next) ***REMOVED***
@@ -19,20 +19,20 @@ router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***), mi
 
 router.post("/", function (req, res) ***REMOVED***
     let body = req.body;
-    console.log((body))
-    if (!body.token || !body.uid) return res.status(400).send("Please specify the correct arguments!");
-    let token = body.token;
+    if (!body.wl || !body.uid) return res.status(400).send("cmon bruh");
     let uid = body.uid;
+    let watchlist = JSON.parse(`***REMOVED***"wl":$***REMOVED***body.wl***REMOVED******REMOVED***`).wl
+    console.log(watchlist)
+    watchlist = Array.from(new Set(watchlist));
+    console.log(watchlist)
     var userRef = db.collection("users");
     userRef.where("uid", "==", uid).get()
         .then(snapshot => ***REMOVED***
             snapshot.forEach(doc => ***REMOVED***
-                console.log(doc.data().token)
-                if(doc.data().token == token)***REMOVED*** return res.status(200).send("Token not updated as there are no changes!")***REMOVED***
                 doc.ref.update(***REMOVED***
-                    token: token
+                    watchlist: watchlist
                 ***REMOVED***)
-                res.status(200).send("Token updated")
+                res.status(200).send("Watchlist updated!")
             ***REMOVED***);
         ***REMOVED***)
         .catch(error => ***REMOVED***
