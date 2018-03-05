@@ -6,6 +6,12 @@ var path = require("path");
 var admin = require("./.functions/admin.js");
 const db = admin.firestore();
 
+function rmv(arr, item) ***REMOVED***
+  x = arr.indexOf(item);
+  arr.splice(x, x + 1);
+  return arr;
+***REMOVED***
+
 var middleware = function(req, res, next) ***REMOVED***
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -17,7 +23,7 @@ var middleware = function(req, res, next) ***REMOVED***
 
 router.use(bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***), middleware);
 
-router.post("/", function(req, res) ***REMOVED***
+router.delete("/", function(req, res) ***REMOVED***
   let body = req.body;
   if (!body.uid) return res.status(400).send("cmon bruh");
   let uid = body.uid;
@@ -30,17 +36,22 @@ router.post("/", function(req, res) ***REMOVED***
       snapshot.forEach(doc => ***REMOVED***
         let wlRef = doc.data().watchlist;
         let watchlist;
-        if (!doc.data().watchlist) ***REMOVED***
-          watchlist = [];
+        console.log(!wlRef.length)
+        if (!wlRef) ***REMOVED***
+          return res.status(200).send("No watchlist!");
+        ***REMOVED*** else if (!wlRef.length) ***REMOVED***
+          return res.status(200).send("Watchlist empty!");
         ***REMOVED*** else ***REMOVED***
           watchlist = wlRef;
+          console.log(watchlist);
+          console.log(item);
+          watchlist = rmv(watchlist, item);
+          console.log(watchlist);
         ***REMOVED***
-        watchlist[watchlist.length] = item;
-        watchlist = Array.from(new Set(watchlist));
         doc.ref.update(***REMOVED***
           watchlist: watchlist
         ***REMOVED***);
-        res.status(200).send("Item added!");
+        return res.status(200).send("Item removed!");
       ***REMOVED***);
     ***REMOVED***)
     .catch(error => ***REMOVED***
