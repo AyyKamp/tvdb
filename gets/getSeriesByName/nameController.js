@@ -25,8 +25,8 @@ router.get("/", function (req, res) ***REMOVED*** // Hier wird definiert das die
 		.then(response => ***REMOVED***
 			res.status(200).send(response); //Status der Anfrage wird auf 200 (HTTP Status code für OK) gesetzt. Außerdem wird die Antwort der Anfrage an die API gesendet.
 		***REMOVED***)
-		.catch(error => ***REMOVED***
-			console.log(error)
+		.catch(error => ***REMOVED*** //Ein potentieller Fehler wird gefangen (korrekte Fachsparche hierzu auf Deutsch zu finden erwies sich als unmöglich.)
+			console.log(error) //Der Fehler wird in die Konsole geloggt.
 			let status = error.response.status; //Variable status entspricht dem Statuscode des Fehlers
 			res.status(status).send(`$***REMOVED***status***REMOVED*** -- $***REMOVED***error.response.statusText***REMOVED***`); //
 		***REMOVED***);
