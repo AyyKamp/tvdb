@@ -9,8 +9,8 @@ function rmv(arr, item) ***REMOVED***
   return arr;
 ***REMOVED***
 
-router.post('/', function(req, res) ***REMOVED***
-  let body = req.body;
+router.delete('/', function(req, res) ***REMOVED***
+  let body = req.query;
   if (!body.uid) return res.status(400).send('cmon bruh');
   let uid = body.uid;
   let item = body.wl_item;
