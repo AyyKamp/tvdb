@@ -28,12 +28,12 @@ let sendMessage = function sendMessage(body) ***REMOVED***
     ***REMOVED***);
 ***REMOVED***;
 
-let sendNotifForSeries = async function sendNotifForSeries(series_id, uid) ***REMOVED***
+let sendNotifForSeries = async function sendNotifForSeries(series_id, uid, lang) ***REMOVED***
   request(
-    `http://tvdb-rest.herokuapp.com/getLatestEpisodeById?series_id=$***REMOVED***series_id***REMOVED***`,
+    `http://tvdb-rest.herokuapp.com/getLatestEpisodeById?series_id=$***REMOVED***series_id***REMOVED***&lang=$***REMOVED***lang***REMOVED***`,
     function(latest_error, latest_response, latest_body) ***REMOVED***
       if (latest_body === '404 -- Not Found' || latest_body === 'This series does not have have any new Episodes!') return false;
-      
+      console.log()
       try ***REMOVED***
         JSON.parse(latest_body);
       ***REMOVED*** catch (e) ***REMOVED***
@@ -46,9 +46,10 @@ let sendNotifForSeries = async function sendNotifForSeries(series_id, uid) ***RE
         new Date(Date.now() + 1000),
         () => ***REMOVED***
           request(
-            `http://tvdb-rest.herokuapp.com/getSeriesById?series_id=$***REMOVED***series_id***REMOVED***`,
+            `http://tvdb-rest.herokuapp.com/getSeriesById?series_id=$***REMOVED***series_id***REMOVED***&lang=$***REMOVED***lang***REMOVED***`,
             function(info_error, info_response, info_body) ***REMOVED***
               info_body = JSON.parse(info_body);
+              console.log(info_body)
               let userRef = db.collection('users');
               userRef
                 .where('uid', '==', uid)
@@ -62,7 +63,6 @@ let sendNotifForSeries = async function sendNotifForSeries(series_id, uid) ***RE
                       token: token,
                       priority: 'high'
                     ***REMOVED***);
-                    return true;
                   ***REMOVED***);
                 ***REMOVED***)
                 .catch(error => ***REMOVED***
