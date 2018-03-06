@@ -12,7 +12,7 @@ router.post('/', function (req, res) ***REMOVED***
     userRef.where('uid', '==', uid).get()
         .then(snapshot => ***REMOVED***
             snapshot.forEach(doc => ***REMOVED***
-                let arr[];
+                let arr = [];
                 for(let i of doc.data().watchlist) ***REMOVED***
                     request(***REMOVED***url:`http://tvdb-rest.herokuapp.com/getSeriesById?series_id=$***REMOVED***i***REMOVED***`***REMOVED***, (err, res, body) => ***REMOVED***
                         if (!err && res.statusCode == 200) ***REMOVED***
