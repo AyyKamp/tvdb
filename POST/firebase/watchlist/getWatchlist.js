@@ -4,7 +4,7 @@ const request = require('request');
 const admin = require('./../.functions/admin.js');
 const db = admin.firestore();
 
-router.post('/', async function (req, res) ***REMOVED***
+router.post('/', function (req, res) ***REMOVED***
     let body = req.body;
     if (!body.uid) return res.status(400).send('cmon bruh');
     let uid = body.uid;
@@ -14,7 +14,7 @@ router.post('/', async function (req, res) ***REMOVED***
             snapshot.forEach(doc => ***REMOVED***
                 let arr = [];
                 for(let i of doc.data().watchlist) ***REMOVED***
-                    await request(***REMOVED***url:`http://tvdb-rest.herokuapp.com/getSeriesById?series_id=$***REMOVED***i***REMOVED***`***REMOVED***, (err, res, body) => ***REMOVED***
+                    request(***REMOVED***url:`http://tvdb-rest.herokuapp.com/getSeriesById?series_id=$***REMOVED***i***REMOVED***`***REMOVED***, (err, res, body) => ***REMOVED***
                         if (!err && res.statusCode == 200) ***REMOVED***
                             console.log(body)
                             arr[arr.length] = JSON.parse(body)
@@ -22,7 +22,7 @@ router.post('/', async function (req, res) ***REMOVED***
                     ***REMOVED***)
                     console.log(arr)
                 ***REMOVED***
-                return res.status(200).send(arr)
+                setTimeout(() => ***REMOVED***return res.status(200).send(arr)***REMOVED***, 2000)
             ***REMOVED***);
         ***REMOVED***)
         .catch(error => ***REMOVED***
