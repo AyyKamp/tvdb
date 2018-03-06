@@ -16,7 +16,7 @@ router.post('/', function (req, res) ***REMOVED***
                     console.log(`http://tvdb-rest.herokuapp.com/getSeriesById?series_id=$***REMOVED***i***REMOVED***`);
                     
                     request(***REMOVED***url:`http://tvdb-rest.herokuapp.com/getSeriesById?series_id=$***REMOVED***i***REMOVED***`***REMOVED***, (err, res, body) => ***REMOVED***
-                        if (!error && response.statusCode == 200) ***REMOVED***
+                        if (!err && response.statusCode == 200) ***REMOVED***
                             console.log(body);
                         ***REMOVED***
                     ***REMOVED***)   
