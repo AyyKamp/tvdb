@@ -11,7 +11,10 @@ let cors_content = function(req, res, next) ***REMOVED***
   next();
 ***REMOVED***;
 
-// Hier wird definiert welche Middleware der Server verwendet.
+// Hier wird definiert welche Middleware der Server verwendet. Bei Middleware handelt es sich in diesem Fall um Software, welche die eingehende Anfragen und die ausgehende Antwort manipuliert.
+// Die bodyParser Middleware parst das body Attribut der Anfrage als JSON
+// Die cors und cors_content Middleware sorgt dafür, dass die Antwort sogenannte CORS Header beinhaltet.
+
 app.use(cors(),bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***),bodyParser.json(), cors_content)
 
 let seriesNameController = require('./GET/getSeriesByName.js');
