@@ -9,7 +9,7 @@ function rmv(arr, item) ***REMOVED***
   return arr;
 ***REMOVED***
 
-router.delete('/', function(req, res) ***REMOVED***
+router.post('/', function(req, res) ***REMOVED***
   let body = req.body;
   if (!body.uid) return res.status(400).send('cmon bruh');
   let uid = body.uid;
@@ -45,10 +45,6 @@ router.delete('/', function(req, res) ***REMOVED***
     .catch(error => ***REMOVED***
       console.log(error);
     ***REMOVED***);
-***REMOVED***);
-
-router.get('/', function(req, res) ***REMOVED***
-  res.status(200).sendFile(path.join(__dirname + '/../html/site.html'));
 ***REMOVED***);
 
 module.exports = router;

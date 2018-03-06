@@ -51,8 +51,4 @@ router.post('/', function(req, res) ***REMOVED***
     ***REMOVED***);
 ***REMOVED***);
 
-router.get('/', function(req, res) ***REMOVED***
-  res.status(200).sendFile(path.join(__dirname + '/../html/site.html'));
-***REMOVED***);
-
 module.exports = router;

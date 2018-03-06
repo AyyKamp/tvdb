@@ -22,15 +22,12 @@ router.post('/', function (req, res) ***REMOVED***
                     ***REMOVED***)
                     console.log(arr)
                 ***REMOVED***
-                setTimeout(() => ***REMOVED***return res.status(200).send(arr)***REMOVED***, 2000)
+                setTimeout(() => ***REMOVED***return res.status(200).send(arr)***REMOVED***, 1000)
             ***REMOVED***);
         ***REMOVED***)
         .catch(error => ***REMOVED***
             console.log(error);
         ***REMOVED***)
-***REMOVED***);
-router.get('/', function (req, res) ***REMOVED***
-    res.status(200).sendFile('./../html/site.html');
 ***REMOVED***);
 
 module.exports = router;
