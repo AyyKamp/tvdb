@@ -12,7 +12,7 @@ Array.prototype.clean = function (deleteValue) ***REMOVED***
   return this;
 ***REMOVED***;
 
-let latestFunction = (dates,eps) => ***REMOVED***
+let latestEpisodeFunction = (eps, dates) => ***REMOVED***
   let minDates = [];
   let times = [];
   let now = new Date();
@@ -48,5 +48,5 @@ let latestFunction = (dates,eps) => ***REMOVED***
 ***REMOVED***;
 
 module.exports = ***REMOVED***
-  latestFunction
+  latestEpisodeFunction
 ***REMOVED***;

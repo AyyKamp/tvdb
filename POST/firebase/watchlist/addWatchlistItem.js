@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const admin = require('./../.functions/admin.js');
+const admin = require('./../admin.js');
 const db = admin.firestore();
 
 router.post('/', function(req, res) ***REMOVED***
@@ -8,6 +8,7 @@ router.post('/', function(req, res) ***REMOVED***
   if (!body.uid) return res.status(400).send('Please define a UID');
   let uid = body.uid;
   let item = body.wl_item;
+  let lang = body.lang
   var userRef = db.collection('users');
   userRef
     .where('uid', '==', uid)
@@ -21,12 +22,28 @@ router.post('/', function(req, res) ***REMOVED***
         ***REMOVED*** else ***REMOVED***
           watchlist = wlRef;
         ***REMOVED***
-        watchlist[watchlist.length] = item;
-        watchlist = Array.from(new Set(watchlist));
-        doc.ref.update(***REMOVED***
-          watchlist: watchlist
-        ***REMOVED***);
-        return res.status(200).send('Item added!');
+        let ids = [];
+        watchlist.forEach((el, i) =>***REMOVED***
+          ids[i] = el.id
+        ***REMOVED***)
+        ids[ids.length] = item
+        newIds = Array.from(new Set(ids));
+        
+        if(newIds.length != ids.length)***REMOVED***
+          doc.ref.update(***REMOVED***
+            watchlist: watchlist
+          ***REMOVED***);
+          return res.status(200).send('Item not added (duplicate)!');
+        ***REMOVED***else***REMOVED***
+          watchlist[watchlist.length] = ***REMOVED***
+            id: item,
+            lang:lang
+          ***REMOVED***
+          doc.ref.update(***REMOVED***
+            watchlist: watchlist
+          ***REMOVED***);
+          return res.status(200).send('Item added!');
+        ***REMOVED***        
       ***REMOVED***);
     ***REMOVED***)
     .catch(error => ***REMOVED***

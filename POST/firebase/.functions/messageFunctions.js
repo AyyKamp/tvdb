@@ -1,4 +1,4 @@
-const admin = require('./admin.js');
+const admin = require('./../admin.js');
 const request = require('request');
 const CronJob = require('cron').CronJob;
 const db = admin.firestore();

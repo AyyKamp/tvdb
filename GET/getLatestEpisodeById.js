@@ -17,7 +17,7 @@ router.get('/', function(req, res) ***REMOVED***
       for (let i = 0; i < eps.length; i++) ***REMOVED***
         dates[i] = new Date(`$***REMOVED***eps[i].firstAired***REMOVED*** $***REMOVED***response.airsTime***REMOVED***`);
       ***REMOVED***
-      let latestEpisode = latestEpFunction.latestFunction(dates, eps);
+      let latestEpisode = latestEpFunction.latestEpisodeFunction(eps, dates);
       if (latestEpisode) ***REMOVED***
         latestEpisode.date = new Date(
           `$***REMOVED***latestEpisode.firstAired***REMOVED*** $***REMOVED***response.airsTime***REMOVED***`

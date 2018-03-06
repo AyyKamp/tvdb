@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const admin = require('./.functions/admin.js');
+const admin = require('./admin.js');
 const db = admin.firestore();
 
 router.post('/', function (req, res) ***REMOVED***

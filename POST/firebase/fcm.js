@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const admin = require('./.functions/admin.js'); //Importieren des admin Moduls. Siehe .functions/admin.js
+const admin = require('./admin.js'); //Importieren des admin Moduls. Siehe .functions/admin.js
 const messageFunctions = require('./.functions/messageFunctions.js');  //Importieren der Methoden zur Versendung von Notifications (zu dt. Benachrichtigung)
 
 router.post('/', function (req, res) ***REMOVED***
