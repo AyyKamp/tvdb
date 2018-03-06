@@ -22,7 +22,7 @@ function callback(error, response, body) ***REMOVED***
     console.log(error, response.statusCode, body);
   ***REMOVED***
 ***REMOVED***
-request(options, callback);
+request(options, callback); // Die Methode rrquest wird nun mit dem Objekt options und der Methode callback als Parameter aufgerufen.
 
 setInterval(function() ***REMOVED***
   request(
