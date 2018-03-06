@@ -11,6 +11,7 @@ let cors_content = function(req, res, next) ***REMOVED***
   next();
 ***REMOVED***;
 
+// Hier wird definiert welche Middleware der Server verwendet.
 app.use(cors(),bodyParser.urlencoded(***REMOVED*** extended: true ***REMOVED***),bodyParser.json(), cors_content)
 
 let seriesNameController = require('./GET/getSeriesByName.js');
