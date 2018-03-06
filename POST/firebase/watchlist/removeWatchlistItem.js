@@ -28,10 +28,13 @@ router.delete('/', function(req, res) ***REMOVED***
           return res.status(200).send('Watchlist empty!');
         ***REMOVED*** else ***REMOVED***
           watchlist = wlRef;
-          let index = watchlist.indexOf(item);
+          let ids = [];
+          watchlist.forEach((el, i) =>***REMOVED***
+            ids[i] = el.id
+          ***REMOVED***)
+          let index = ids.indexOf(item);
           if(index === -1) return res.status(200).send('Item not in the Watchlist!');
           watchlist.splice(index, index + 1);
-          console.log(watchlist);
         ***REMOVED***
         doc.ref.update(***REMOVED***
           watchlist: watchlist
