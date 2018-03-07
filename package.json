@@ -1,9 +1,9 @@
-***REMOVED***
+{
   "name": "tvdb-rest",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "dependencies": ***REMOVED***
+  "dependencies": {
     "cors": "^2.8.4",
     "cron": "^1.3.0",
     "dotenv": "^5.0.1",
@@ -12,18 +12,18 @@
     "firebase-admin": "^5.8.1",
     "heroku-client": "^3.0.6",
     "node-tvdb": "^3.2.0"
-  ***REMOVED***,
-  "devDependencies": ***REMOVED***
+  },
+  "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
     "nodemon": "^1.14.11",
     "eslint": "^4.17.0"
-  ***REMOVED***,
-  "scripts": ***REMOVED***
+  },
+  "scripts": {
     "test": "nodemon server.js",
     "start": "node server.js"
-  ***REMOVED***,
-  "engines": ***REMOVED***
+  },
+  "engines": {
     "node": "8.9.4"
-  ***REMOVED***
-***REMOVED***
+  }
+}

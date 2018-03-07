@@ -3,13 +3,13 @@ const router = express.Router();
 const admin = require('./../admin.js');
 const db = admin.firestore();
 
-function rmv(arr, item) ***REMOVED***
+function rmv(arr, item) {
   x = arr.indexOf(item);
   arr.splice(x, x + 1);
   return arr;
-***REMOVED***
+}
 
-router.delete('/', function(req, res) ***REMOVED***
+router.delete('/', function(req, res) {
   let body = req.query;
   if (!body.uid) return res.status(400).send('cmon bruh');
   let uid = body.uid;
@@ -18,33 +18,33 @@ router.delete('/', function(req, res) ***REMOVED***
   userRef
     .where('uid', '==', uid)
     .get()
-    .then(snapshot => ***REMOVED***
-      snapshot.forEach(doc => ***REMOVED***
+    .then(snapshot => {
+      snapshot.forEach(doc => {
         let wlRef = doc.data().watchlist;
         let watchlist;
-        if (!wlRef) ***REMOVED***
+        if (!wlRef) {
           return res.status(200).send('No watchlist!');
-        ***REMOVED*** else if (!wlRef.length) ***REMOVED***
+        } else if (!wlRef.length) {
           return res.status(200).send('Watchlist empty!');
-        ***REMOVED*** else ***REMOVED***
+        } else {
           watchlist = wlRef;
           let ids = [];
-          watchlist.forEach((el, i) =>***REMOVED***
+          watchlist.forEach((el, i) =>{
             ids[i] = el.id
-          ***REMOVED***)
+          })
           let index = ids.indexOf(item);
           if(index === -1) return res.status(200).send('Item not in the Watchlist!');
           watchlist.splice(index, index + 1);
-        ***REMOVED***
-        doc.ref.update(***REMOVED***
+        }
+        doc.ref.update({
           watchlist: watchlist
-        ***REMOVED***);
+        });
         return res.status(200).send('Item removed!');
-      ***REMOVED***);
-    ***REMOVED***)
-    .catch(error => ***REMOVED***
+      });
+    })
+    .catch(error => {
       console.log(error);
-    ***REMOVED***);
-***REMOVED***);
+    });
+});
 
 module.exports = router;

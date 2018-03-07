@@ -1,52 +1,52 @@
-Array.prototype.min = function() ***REMOVED***
+Array.prototype.min = function() {
   return Math.min.apply(null, this);
-***REMOVED***;
+};
 
-Array.prototype.clean = function (deleteValue) ***REMOVED***
-  for (let i = 0; i < this.length; i++) ***REMOVED***
-    if (this[i] == deleteValue) ***REMOVED***
+Array.prototype.clean = function (deleteValue) {
+  for (let i = 0; i < this.length; i++) {
+    if (this[i] == deleteValue) {
       this.splice(i, 1);
       i--;
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
   return this;
-***REMOVED***;
+};
 
-let latestEpisodeFunction = (eps, dates) => ***REMOVED***
+let latestEpisodeFunction = (eps, dates) => {
   let minDates = [];
   let times = [];
   let now = new Date();
   
-  dates.forEach((el, i) => ***REMOVED***
-    if(el > now) ***REMOVED***
+  dates.forEach((el, i) => {
+    if(el > now) {
       times[i] = el
-    ***REMOVED*** else ***REMOVED***
+    } else {
       times[i] = undefined
-    ***REMOVED***
-  ***REMOVED***);
+    }
+  });
 
-  for (let i in dates) ***REMOVED***
-    if (times[i]) ***REMOVED***
+  for (let i in dates) {
+    if (times[i]) {
       console.log(times[i])
       
       minDates[i] = new Date(times[i]).getTime()
-    ***REMOVED*** else ***REMOVED***
+    } else {
       minDates[i] = undefined;
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
 
-  for(let el of minDates) ***REMOVED***
-    if(el) ***REMOVED***
+  for(let el of minDates) {
+    if(el) {
       el -= now.getTime()
-    ***REMOVED*** else ***REMOVED***
+    } else {
       el = undefined
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
 
   let finalDate = minDates.slice(0).clean();
   return eps[minDates.indexOf(finalDate.min())];
-***REMOVED***;
+};
 
-module.exports = ***REMOVED***
+module.exports = {
   latestEpisodeFunction
-***REMOVED***;
+};

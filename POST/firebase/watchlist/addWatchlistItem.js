@@ -4,7 +4,7 @@ const admin = require("./../admin.js");
 const db = admin.firestore();
 const request = require("request");
 
-router.post("/", function(req, res) ***REMOVED***
+router.post("/", function(req, res) {
   let body = req.body;
   if (!body.uid) return res.status(400).send("Please define a UID");
   let uid = body.uid;
@@ -14,57 +14,57 @@ router.post("/", function(req, res) ***REMOVED***
   userRef
     .where("uid", "==", uid)
     .get()
-    .then(snapshot => ***REMOVED***
-      snapshot.forEach(doc => ***REMOVED***
+    .then(snapshot => {
+      snapshot.forEach(doc => {
         let wlRef = doc.data().watchlist;
         let watchlist;
-        if (!doc.data().watchlist) ***REMOVED***
+        if (!doc.data().watchlist) {
           watchlist = [];
-        ***REMOVED*** else ***REMOVED***
+        } else {
           watchlist = wlRef;
-        ***REMOVED***
+        }
         let ids = [];
-        watchlist.forEach((el, i) => ***REMOVED***
+        watchlist.forEach((el, i) => {
           ids[i] = el.id;
-        ***REMOVED***);
+        });
         ids[ids.length] = item;
         newIds = Array.from(new Set(ids));
 
-        if (newIds.length != ids.length) ***REMOVED***
-          doc.ref.update(***REMOVED***
+        if (newIds.length != ids.length) {
+          doc.ref.update({
             watchlist: watchlist
-          ***REMOVED***);
+          });
           return res.status(200).send("Item not added (duplicate)!");
-        ***REMOVED*** else ***REMOVED***
-          watchlist[watchlist.length] = ***REMOVED***
+        } else {
+          watchlist[watchlist.length] = {
             id: item,
             lang: lang
-          ***REMOVED***;
-          doc.ref.update(***REMOVED***
+          };
+          doc.ref.update({
             watchlist: watchlist
-          ***REMOVED***);
+          });
           request(
-            ***REMOVED***
+            {
               url: "http://tvdb-rest.herokuapp.com/watchlistNotif",
               method: "POST",
-              json: ***REMOVED***
+              json: {
                 uid: uid,
                 series_id: item,
                 lang:lang
-              ***REMOVED***
-            ***REMOVED***,
-            function(error, response, body) ***REMOVED***
+              }
+            },
+            function(error, response, body) {
               return res.status(200).send("Item added!");
-            ***REMOVED***
+            }
           );
 
           
-        ***REMOVED***
-      ***REMOVED***);
-    ***REMOVED***)
-    .catch(error => ***REMOVED***
+        }
+      });
+    })
+    .catch(error => {
       console.log(error);
-    ***REMOVED***);
-***REMOVED***);
+    });
+});
 
 module.exports = router;

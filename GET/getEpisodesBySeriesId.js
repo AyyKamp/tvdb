@@ -1,21 +1,21 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', function (req, res) ***REMOVED***
+router.get('/', function (req, res) {
 	let queryString = req.query;
 	let lang = req.query.lang || 'en';
-	let tvdb = require(`$***REMOVED***__dirname***REMOVED***/../tvdb_$***REMOVED***lang***REMOVED***.js`);
+	let tvdb = require(`${__dirname}/../tvdb_${lang}.js`);
 
 	tvdb
 		.getSeriesAllById(queryString.series_id)
-		.then(response => ***REMOVED***
+		.then(response => {
 			return res.status(200).send(response.episodes);
-		***REMOVED***)
-		.catch(error => ***REMOVED***
+		})
+		.catch(error => {
 			console.log(error);
 			let status = error.response.status
-			return res.status(status).send(`$***REMOVED***status***REMOVED*** -- $***REMOVED***error.response.statusText***REMOVED***`);
-		***REMOVED***);
-***REMOVED***);
+			return res.status(status).send(`${status} -- ${error.response.statusText}`);
+		});
+});
 
 module.exports = router;
