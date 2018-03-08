@@ -22,7 +22,8 @@ function callback(error, response, body) {
     console.log(error, response.statusCode, body);
   }
 }
-request(options, callback); // Die Methode rrquest wird nun mit dem Objekt options und der Methode callback als Parameter aufgerufen.
+
+request(options, callback); // Die Methode request wird nun mit dem Objekt options und der Methode callback als Parameter aufgerufen.
 
 setInterval(function() {
   request(
